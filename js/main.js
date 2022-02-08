@@ -2,18 +2,18 @@ let guessedWordCategory, guessedWordRandomPicked;
 let listRandomWords = [];
 let attempts = 0;
 
-const ListWords = [
+const listWords = [
     word1 = {
-        nome: "cookie",
-        categoria: "sweet - food"
+        name: "cookie",
+        category: "sweet - food"
     },
     word2 = {
-        nome: "marshmellow",
-        categoria: "sweet - food"
+        name: "marshmellow",
+        category: "sweet - food"
     },
     word3 = {
-        nome: "cake",
-        categoria: "sweet - food"
+        name: "muffin",
+        category: "sweet - food"
     }
 ]
 
@@ -32,6 +32,23 @@ function  changeKeyStyle(key) {
     document.getElementById(key).style.color = "#ffffff";
 }
 
+function compareKeys(key){
+    const position = guessedWordRandomPicked.indexOf(key);
+    if (position < 0){
+        attempts--
+        appearBodyParts();
+
+        if(attempts == 0){
+            openModal('Sorry... 😞, The correct word was <br>'+ guessedWordRandomPicked);
+        }
+    } else {
+        for (let i = 0; i < guessedWordRandomPicked.length; i++){
+            if (guessedWordRandomPicked[i]== word){
+                listWords[i] = word;
+            }
+        }
+    }
+};
 
 // Reload
 let btnReset = document.querySelector("#btnReset")
