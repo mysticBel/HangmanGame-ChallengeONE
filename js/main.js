@@ -1,6 +1,6 @@
 let guessedWordCategory, guessedWordRandomPicked; 
 let listRandomWords = [];
-let attempts = 0;
+let attempts = 6;
 
 const listWords = [
     word1 = {
@@ -36,7 +36,7 @@ function compareKeys(key){
     const position = guessedWordRandomPicked.indexOf(key);
     if (position < 0){
         attempts--
-        appearBodyParts();
+        showBodyParts();
 
         if(attempts == 0){
             openModal('Sorry... 😞, The correct word was <br>'+ guessedWordRandomPicked);
@@ -49,6 +49,19 @@ function compareKeys(key){
         }
     }
 };
+
+
+
+
+function openModal(title, msg){
+    let modalTitle = document.getElementById('exampleModalLabel');
+    modalTitle.innerText = title ;
+
+    let modalBody = document.getElementById('modalBody');
+    modalBody.innerHTML = msg;
+
+    $('#myModay').modal({ show:true });
+}
 
 // Reload
 let btnReset = document.querySelector("#btnReset")
